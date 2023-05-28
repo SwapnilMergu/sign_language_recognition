@@ -20,7 +20,7 @@ def extract_features(image_path):
 
 # Step 2: Load and preprocess the dataset
 def load_dataset():
-    image_path = "D:/Swapnil/python/tensorflow/Images/"
+    image_path = "Images/"
     labels = []  # 0 represents A, 25 represents Z
 
     # Extract features from images
@@ -62,19 +62,6 @@ def convert_to_tf_model(classifier):
         ])
         model.layers[1].set_weights([svm.coef_.T])
     else:
-        '''# Non-linear kernel case
-        support_vectors = svm.support_vectors_
-        dual_coefs = svm.dual_coef_
-
-        # Calculate the weights using the support vectors and dual coefficients
-        weights = np.dot(dual_coefs, support_vectors)
-        weights = np.squeeze(weights)  # Remove the redundant dimension
-        weights = weights.reshape((-1, 1))
-        model = tf.keras.Sequential([
-            tf.keras.layers.Reshape(input_shape, input_shape=input_shape),
-            tf.keras.layers.Dense(1, activation='linear', use_bias=False)
-        ])
-        model.layers[1].set_weights([weights])'''
         model = tf.keras.Sequential()
         model.add(tf.keras.layers.Dense(64, activation='relu', kernel_initializer='he_normal', input_shape=(100,)))
         
@@ -105,7 +92,7 @@ def predict_image(classifier, image_path):
     prediction = classifier.predict([features])
 
     return prediction
-new_image_path = 'D:/Swapnil/python/tensorflow/Images/F/103.png'  # Replace with the path to your new image
+new_image_path = 'Images/F/103.png'  # Replace with the path to your new image
 prediction = predict_image(classifier, new_image_path)
 print(prediction)   
 print("Predicted value:",folders[int(prediction)])
