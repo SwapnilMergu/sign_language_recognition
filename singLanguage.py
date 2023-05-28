@@ -20,7 +20,7 @@ def extract_features(image_path):
 
 def load_dataset():
     # List of image paths and corresponding labels
-    image_path = "D:/Swapnil/python/tensorflow/Images/" #['cat1.jpg', 'cat2.jpg', 'dog1.jpg', 'dog2.jpg']
+    image_path = "Images/" #['cat1.jpg', 'cat2.jpg', 'dog1.jpg', 'dog2.jpg']
     labels = []  # 0 represents cat, 1 represents dog
 
     # Extract features from images
@@ -110,7 +110,7 @@ def train_and_evaluate():
 train_and_evaluate()
 
 
-'''new_image_path = 'D:/Swapnil/python/tensorflow/demo.png'  # Replace with the path to your new image
+'''new_image_path = 'demo.png'  # Replace with the path to your new image
 prediction = predict_image(classifier, new_image_path)
 
 # Print the predicted label
